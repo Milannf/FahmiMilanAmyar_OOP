@@ -34,5 +34,4 @@ class Score {
         System.out.println("Created At:" + createdAt);
 
     }
-    }
-
+}
