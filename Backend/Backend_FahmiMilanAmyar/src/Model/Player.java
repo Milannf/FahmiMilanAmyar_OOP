@@ -1,3 +1,5 @@
+package Model;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -37,7 +39,7 @@ public class Player {
     void showDetail() {
         System.out.println("PlayerID: " + player);
         System.out.println("Username: " + username);
-        System.out.println("High Score: " + highscore);
+        System.out.println("High Model.Score: " + highscore);
         System.out.println("Total Coins: " + totalCoins);
         System.out.println("Total Distance: " + totalDistance);
         System.out.println("Created At:" + createdAt);

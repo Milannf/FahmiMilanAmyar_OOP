@@ -1,6 +1,10 @@
-package Model;
-
 import java.util.UUID;
+
+interface ShowDetail{
+
+    void showdetail();
+
+}
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,6 @@
-import Model.player;
+package BaseRepository;
+
+import Model.Player;
 
 class PlayerRepository<Player, UUID> extends BaseRepository{
     Player player;
@@ -28,12 +30,15 @@ class PlayerRepository<Player, UUID> extends BaseRepository{
                 .findFirst();
     }
     void findAllByOrderByTotalDistanceTravelledDesc(){
-
+        return allData.stream()
+                .sorted()
+                .collect();
     }
+
+    @Override
     void save(Player player){
-
     }
+    @Override
     void getID(Player entity){
-
     }
 }
