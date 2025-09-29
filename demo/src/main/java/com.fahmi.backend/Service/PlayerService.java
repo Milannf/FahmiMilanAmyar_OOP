@@ -1,4 +1,4 @@
-package ScoreService;
+package Service;
 
 public class PlayerService {
 }
