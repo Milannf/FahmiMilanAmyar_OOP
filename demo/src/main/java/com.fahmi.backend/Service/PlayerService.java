@@ -99,7 +99,10 @@ public class PlayerService {
      * @throws RuntimeException if player not found
      */
     public void deletePlayer(UUID playerId) {
-        if (!playerRepository.existsById(playerId));
+        // This block is now corrected
+        if (!playerRepository.existsById(playerId)) {
+            throw new RuntimeException("Player not found with ID: " + playerId);
+        }
         playerRepository.deleteById(playerId);
     }
 
@@ -164,5 +167,8 @@ public class PlayerService {
      */
     public boolean isUsernameExists(String username) {
         return playerRepository.findByUsername(username).isPresent();
+    }
+
+    public void updatePlayerStats(Score savedScore) {
     }
 }

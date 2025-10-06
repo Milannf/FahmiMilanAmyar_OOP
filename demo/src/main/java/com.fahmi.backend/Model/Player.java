@@ -77,4 +77,8 @@ public class Player {
     public void addDistance(Integer distance) {
         this.totalDistance += distance;
     }
+
+    public UUID getId() {
+        return null;
+    }
 }
