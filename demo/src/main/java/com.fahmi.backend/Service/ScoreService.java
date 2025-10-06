@@ -66,14 +66,13 @@ public class ScoreService {
         return scoreRepository.findTopScores(pageable);
     }
 
-    public List<Score> getHighestScoreByPlayerId(UUID playerId){
-        if (getAllScores().isEmpty()) {
-            return Optional.empty(Score);
-        }
-        else{
+    public Optional<Score> getHighestScoreByPlayerId(UUID playerId){
+        List<Score> scores = scoreRepository.findHighestScoreByPlayerId(playerId);
+        if (scores.isEmpty()) {
+            return Optional.empty();
+        } else {
             return Optional.of(scores.get(0));
         }
-
     }
 
     public List<Score> getScoresAboveValue(Integer minValue){
@@ -85,30 +84,31 @@ public class ScoreService {
     }
 
     public Integer getTotalCoinsByPlayerId(UUID playerId){
-        return scoreRepository.getTotalDistanceByPlayerId(playerId);
+        Integer total = scoreRepository.getTotalDistanceByPlayerId(playerId);
+        return (total != null) ? total : 0;
     }
     public Integer getTotalDistanceByPlayerId(UUID playerId){
-        return scoreRepository.getTotalDistanceByPlayerId(playerId);
+        Integer total = scoreRepository.getTotalDistanceByPlayerId(playerId);
+        return (total != null) ? total : 0;
     }
 
     public Score updateScore(UUID scoreId, Score updatedScore){
-        scoreRepository.findById(scoreId).orElseThrow(() -> new RuntimeException());
+        Score existingScore = scoreRepository.findById(scoreId)
+                .orElseThrow(() -> new RuntimeException("Score Tak Nak Ada"));
         return scoreRepository.save(existingScore);
     }
 
-    public Score deleteScore(UUID scoreId){
-        scoreRepository.existsById(scoreId).orElseThrow(() -> new RuntimeException());
+    public void deleteScore(UUID scoreId){
+        if (!scoreRepository.existsById(scoreId)) {
+            throw new RuntimeException("Score not found");
+        }
         scoreRepository.deleteById(scoreId);
-        return null;
     }
 
-    void deleteScoresByPlayerId(UUID playerId){
-        scoreRepository.findByPlayerId(playerId);
-        scoreRepository.deleteAll();
+    public void deleteScoresByPlayerId(UUID playerId){
+        List<Score> playerScores = scoreRepository.findByPlayerId(playerId);
+        scoreRepository.deleteAll(playerScores);
     }
-
-
-
 
 
 }

@@ -5,6 +5,7 @@ import com.fahmi.backend.Model.Score;
 import com.fahmi.backend.Repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,8 @@ public class PlayerService {
 
         return playerRepository.save(player);
     }
+
+
 
     /**
      * Get player by ID
@@ -140,8 +143,8 @@ public class PlayerService {
      * @param limit maximum number of players to return
      * @return List of top players by high score
      */
-    public List<Player> getLeaderboardByHighScore(int limit) {
-        return playerRepository.findTopPlayersByHighScore(limit);
+    public List<Player> getLeaderboard(int limit) {
+        return playerRepository.findTopPlayers(PageRequest.of(0, limit));
     }
 
     /**
