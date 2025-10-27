@@ -2,29 +2,24 @@ package com.fahmi.frontend;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
-import java.awt.*;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Ground {
-    static float GROUND_HEIGHT = 50f;
+    private static final float GROUND_HEIGHT = 50f;
     private Rectangle collider;
 
     public Ground() {
-        collider = new Rectangle(0, 0, 2 * Gdx.graphics.getWidth(), (int)GROUND_HEIGHT);
+        this.collider = new Rectangle(0, 0, 2 * Gdx.graphics.getWidth(), GROUND_HEIGHT);
     }
 
     public void update(float cameraX){
-        float one = cameraX - Gdx.graphics.getWidth() / 2f - 500;
-
-        collider.x = (int) one;
+        collider.x = cameraX - Gdx.graphics.getWidth() / 2f - 500;
         collider.y = 0;
+        collider.width = 2 * Gdx.graphics.getWidth();
     }
 
     public boolean isColliding(Rectangle playerCollider){
-        if (collider.overlaps(playerCollider)){
-            return true;
-        }
-        return false;
+        return playerCollider.overlaps(collider);
     }
 
     public float getTopY(){
@@ -32,9 +27,7 @@ public class Ground {
     }
 
     public void renderShape(ShapeRenderer shapeRenderer){
-
         shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
-        shapeRenderer.rect(collider.x, collider.y, Gdx.graphics.getWidth(), GROUND_HEIGHT);
+        shapeRenderer.rect(collider.x, collider.y, collider.width, GROUND_HEIGHT);
     }
-
 }
