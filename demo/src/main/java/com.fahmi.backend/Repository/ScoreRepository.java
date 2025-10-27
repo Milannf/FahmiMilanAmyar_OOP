@@ -50,4 +50,3 @@ public interface ScoreRepository extends JpaRepository<Score, UUID> {
     @Query("SELECT SUM(s.distanceTravelled) FROM Score s WHERE s.playerId = :playerId")
     Integer getTotalDistanceByPlayerId(@Param("playerId") UUID playerId);
 }
-

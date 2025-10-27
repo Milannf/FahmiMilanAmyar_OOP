@@ -1,4 +1,4 @@
-package com.fahmi.backend.Service; // sesuaikan dengan package anda
+package com.fahmi.backend.Service;
 
 import com.fahmi.backend.Model.Score;
 import com.fahmi.backend.Repository.PlayerRepository;
@@ -28,20 +28,23 @@ public class ScoreService {
 
     @Transactional
     public Score createScore(Score score) {
-        if (score.getPlayer() == null || score.getPlayer().getId() == null) {
-            throw new RuntimeException("Player information is missing in the score object.");
+        // Verify player exists
+        if (!playerRepository.findById(score.getPlayerId()).isPresent()) {
+            throw new RuntimeException("Player not found with ID: " + score.getPlayerId());
         }
 
-        boolean playerExists = playerRepository.existsById(score.getPlayer().getId());
-        if (!playerExists) {
-            throw new RuntimeException("Player not found with ID: " + score.getPlayer().getId());
-        }
+        // Save the score
+        scoreRepository.save(score);
 
-        Score savedScore = scoreRepository.save(score);
+        // Update player statistics
+        playerService.updatePlayerStats(
+                score.getPlayerId(), // Tidak perlu cast ke UUID
+                score.getValue(),
+                score.getCoinsCollected(),
+                score.getDistanceTravelled()
+        );
 
-        playerService.updatePlayerStats(savedScore);
-
-        return savedScore;
+        return score;
     }
 
 
@@ -109,6 +112,5 @@ public class ScoreService {
         List<Score> playerScores = scoreRepository.findByPlayerId(playerId);
         scoreRepository.deleteAll(playerScores);
     }
-
 
 }

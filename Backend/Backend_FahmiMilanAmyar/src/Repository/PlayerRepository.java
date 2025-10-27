@@ -5,7 +5,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PlayerRepository extends BaseRepository<Player, UUID> {
-
     @Override
     public void save(Player player) {
         UUID id = getId(player);
@@ -24,11 +23,6 @@ public class PlayerRepository extends BaseRepository<Player, UUID> {
                 .findFirst();
     }
 
-    public boolean existByUsername(String username) {
-        return allData.stream()
-                .anyMatch(player -> player.getUsername().equals(username));
-    }
-
     public List<Player> findTopPlayersByHighScore(int limit) {
         return allData.stream()
                 .sorted((p1, p2) -> Integer.compare(p2.getHighScore(), p1.getHighScore()))
@@ -42,19 +36,20 @@ public class PlayerRepository extends BaseRepository<Player, UUID> {
                 .collect(Collectors.toList());
     }
 
-    public List<Player> findAllByOrderByTotalCoinsDesc(UUID playerId){
+    public boolean existByUsername(String username) {
         return allData.stream()
-                .filter(player -> player.getPlayerId().equals(playerId))
+                .anyMatch(player -> player.getUsername().equals(username));
+    }
+
+    public List<Player> findAllByOrderByTotalCoinsDesc() {
+        return allData.stream()
                 .sorted((p1, p2) -> Integer.compare(p2.getTotalCoins(), p1.getTotalCoins()))
                 .collect(Collectors.toList());
     }
 
-    public List<Player> findAllByOrderByTotalDistanceTravelledDesc(UUID playerId){
+    public List<Player> findAllByOrderByTotalDistanceTravelledDesc() {
         return allData.stream()
-                .filter(player -> player.getPlayerId().equals(playerId))
                 .sorted((p1, p2) -> Integer.compare(p2.getTotalDistance(), p1.getTotalDistance()))
                 .collect(Collectors.toList());
-
     }
-
 }

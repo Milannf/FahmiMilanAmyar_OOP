@@ -1,7 +1,7 @@
-package com.fahmi.backend.controller; //sesuaikan
-import com.fahmi.backend.Model.Player; //sesuaikan
+package com.fahmi.backend.controller;
+import com.fahmi.backend.Model.Player;
 import com.fahmi.backend.Model.Score;
-import com.fahmi.backend.Service.PlayerService; // sesuaikan
+import com.fahmi.backend.Service.PlayerService;
 import com.fahmi.backend.Service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -43,7 +43,7 @@ public class Score {
         return distance;
     }
 
-    public Object getPlayerId() {
+    public UUID getPlayerId() {
         return playerId;
     }
 

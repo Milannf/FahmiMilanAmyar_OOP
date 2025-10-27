@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
@@ -17,7 +18,6 @@ public class HealthController {
         health.put("message", "Jetpack Joyride Backend is running!");
         health.put("timestamp", System.currentTimeMillis());
         return health;
-
     }
 
     @GetMapping("/info")
