@@ -23,7 +23,6 @@ public class Player {
     }
     public void update(float delta, boolean isFlying){
         updateDistanceAndSpeed(delta);
-
         if (isFlying) {
             fly(delta);
         }
