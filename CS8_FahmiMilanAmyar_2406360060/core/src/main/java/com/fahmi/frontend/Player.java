@@ -8,7 +8,7 @@ public class Player {
     private Vector2 position;
     private Vector2 velocity;
     private float gravity = 2000f;
-    private float force = 4500f;
+    private float flyImpulse = 600f;
     private float maxVerticalSpeed = 700f;
     private Rectangle collider;
     private float width = 64f;
@@ -34,16 +34,13 @@ public class Player {
         this.isDead = false;
     }
 
-    public void update(float delta, boolean isFlying) {
+    public void update(float delta) {
         if (isDead) {
             return;
         }
 
         updateDistanceAndSpeed(delta);
         applyGravity(delta);
-        if (isFlying) {
-            fly(delta);
-        }
         updatePosition(delta);
         updateCollider();
     }
@@ -64,13 +61,11 @@ public class Player {
 
         if (velocity.y < -maxVerticalSpeed) {
             velocity.y = -maxVerticalSpeed;
-        } else if (velocity.y > maxVerticalSpeed) {
-            velocity.y = maxVerticalSpeed;
         }
     }
 
-    private void fly(float delta) {
-        velocity.y += force * delta;
+    public void fly() {
+        velocity.y = flyImpulse;
     }
 
     private void updateCollider() {

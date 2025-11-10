@@ -1,14 +1,15 @@
 package com.fahmi.frontend;
 
-public class GameManager {
-    private static GameManager instance;
+import com.fahmi.frontend.observers.Observer;
+import com.fahmi.frontend.observers.ScoreManager;
 
-    private int score;
-    private boolean gameActive;
+public class GameManager {
+
+    private static GameManager instance;
+    private ScoreManager scoreManager;
 
     private GameManager() {
-        score = 0;
-        gameActive = false;
+        scoreManager = new ScoreManager();
     }
 
     public static GameManager getInstance() {
@@ -18,18 +19,19 @@ public class GameManager {
         return instance;
     }
 
-    public void startGame() {
-        score = 0;
-        gameActive = true;
-        System.out.println("Game Started!");
+    public void setScore(int score) {
+        scoreManager.setScore(score);
     }
 
-    public void setScore(int newScore) {
-        if (gameActive) {
-            score = newScore;
-        }
+    public int getScore() {
+        return scoreManager.getScore();
     }
 
-    public int getScore() { return score; }
+    public void addObserver(Observer observer) {
+        scoreManager.addObserver(observer);
+    }
 
+    public void removeObserver(Observer observer) {
+        scoreManager.removeObserver(observer);
+    }
 }
