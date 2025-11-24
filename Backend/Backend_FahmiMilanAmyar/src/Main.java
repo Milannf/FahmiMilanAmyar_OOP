@@ -1,4 +1,3 @@
-Model.Player;
 import Model.Player;
 import Model.Score;
 import Repository.PlayerRepository;

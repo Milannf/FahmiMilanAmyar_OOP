@@ -13,6 +13,7 @@ public class ScoreUIObserver implements Observer {
     public ScoreUIObserver() {
         this.font = new BitmapFont();
         this.font.setColor(Color.WHITE);
+        this.font.getData().setScale(1.5f);
         this.batch = new SpriteBatch();
     }
 
@@ -21,9 +22,16 @@ public class ScoreUIObserver implements Observer {
         Gdx.app.log("ScoreUIObserver", "Skor telah diperbarui: " + score);
     }
 
-    public void render(int score) {
+    public void render(int score, int coins) {
         batch.begin();
-        font.draw(batch, "Score: " + score, 10, Gdx.graphics.getHeight() - 10);
+
+        font.setColor(Color.WHITE);
+        font.draw(batch, "Distance: " + score + "m", 20, Gdx.graphics.getHeight() - 20);
+
+        font.setColor(Color.WHITE);
+        font.draw(batch, "Coins: " + coins, 20, Gdx.graphics.getHeight() - 50);
+
+        font.setColor(Color.WHITE);
         batch.end();
     }
 

@@ -8,7 +8,7 @@ public class Player {
     private Vector2 position;
     private Vector2 velocity;
     private float gravity = 2000f;
-    private float flyImpulse = 600f;
+    private float force = 4500f;
     private float maxVerticalSpeed = 700f;
     private Rectangle collider;
     private float width = 64f;
@@ -17,8 +17,8 @@ public class Player {
     private float baseSpeed = 300f;
     private float distanceTraveled = 0f;
 
-    private final Vector2 startPosition;
-    private boolean isDead;
+    private boolean isDead = false;
+    private Vector2 startPosition;
 
     public Player(Vector2 startPosition) {
         this.startPosition = new Vector2(startPosition);
@@ -31,17 +31,17 @@ public class Player {
             height
         );
         velocity = new Vector2(baseSpeed, 0);
-        this.isDead = false;
     }
 
-    public void update(float delta) {
-        if (isDead) {
-            return;
+    public void update(float delta, boolean isFlying) {
+        if (!isDead) {
+            updateDistanceAndSpeed(delta);
+            applyGravity(delta);
+            if (isFlying) {
+                fly(delta);
+            }
+            updatePosition(delta);
         }
-
-        updateDistanceAndSpeed(delta);
-        applyGravity(delta);
-        updatePosition(delta);
         updateCollider();
     }
 
@@ -58,14 +58,17 @@ public class Player {
     private void applyGravity(float delta) {
         velocity.y -= gravity * delta;
         velocity.x = baseSpeed;
-
         if (velocity.y < -maxVerticalSpeed) {
             velocity.y = -maxVerticalSpeed;
+        } else if (velocity.y > maxVerticalSpeed) {
+            velocity.y = maxVerticalSpeed;
         }
     }
 
-    public void fly() {
-        velocity.y = flyImpulse;
+    private void fly(float delta) {
+        if (!isDead) {
+            velocity.y += force * delta;
+        }
     }
 
     private void updateCollider() {
@@ -84,28 +87,47 @@ public class Player {
         }
     }
 
-    public void render(ShapeRenderer shapeRenderer) {
+    public void renderShape(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(0f, 1f, 0f, 1f);
         shapeRenderer.rect(position.x, position.y, width, height);
     }
 
-    public Vector2 getPosition() { return position; }
-    public float getWidth() { return width; }
-    public float getHeight() { return height; }
-    public Rectangle getCollider() { return collider; }
-    public float getDistanceTraveled() { return distanceTraveled / 10f; }
-
-
+    public void fly() {
+        if (!isDead) {
+            velocity.y += force * 1/60f;
+        }
+    }
     public void die() {
-        this.isDead = true;
-        this.velocity.set(0, 0);
+        isDead = true;
+        velocity.x = 0;
+        velocity.y = 0;
     }
 
     public void reset() {
-        this.isDead = false;
-        this.position.set(startPosition);
-        this.velocity.set(baseSpeed, 0);
-        this.distanceTraveled = 0f;
+        isDead = false;
+        position.set(startPosition);
+        velocity.set(baseSpeed, 0);
+        distanceTraveled = 0f;
+    }
+
+    public Vector2 getPosition() {
+        return position;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public Rectangle getCollider() {
+        return collider;
+    }
+
+    public float getDistanceTraveled() {
+        return distanceTraveled / 10f;
     }
 
     public boolean isDead() {

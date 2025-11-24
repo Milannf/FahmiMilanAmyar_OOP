@@ -1,7 +1,7 @@
 package com.fahmi.frontend;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -9,29 +9,51 @@ public class Coin {
     private Vector2 position;
     private Rectangle collider;
     private float radius = 15f;
-    boolean active;
+    private boolean active;
     private float bobOffset;
-    private float bobSpeed;
+    private float bobSpeed = 5f;
 
-    public Coin(Vector2 startPosition){
-        this.collider = collider;
+    public Coin(Vector2 startPosition) {
+        this.position = startPosition;
+        this.active = true;
+        this.bobOffset = 0f;
+        this.collider = new Rectangle(position.x - radius, position.y - radius, radius * 2, radius * 2);
+    }
 
+    public void update(float delta) {
+        bobOffset += bobSpeed * delta;
+        float drawY = position.y + (float)(Math.sin(bobOffset) * 5f);
+        collider.setPosition(position.x - radius, drawY - radius);
     }
-    public void update(float delta){
-        collider.y = bobSpeed * delta;
+
+    public void renderShape(ShapeRenderer shapeRenderer) {
+        if (!active) {
+            return;
+        }
+        float drawY = position.y + (float)(Math.sin(bobOffset) * 5f);
+        shapeRenderer.setColor(1f, 1f, 0f, 1f);
+        shapeRenderer.circle(position.x, drawY, radius);
     }
-    public void renderShape(ShapeRenderer shapeRenderer){
-        shapeRenderer.circle(collider.x, collider.y, radius);
-        shapeRenderer.setColor(Color.YELLOW);
-    }
-    public boolean isColliding(Rectangle playerCollider){
-        if (isColliding(playerCollider) && active == true){
+
+    public boolean isColliding(Rectangle playerCollider) {
+        if (active && collider.overlaps(playerCollider)) {
+            active = false;
             return true;
         }
         return false;
     }
 
+    public Vector2 getPosition() {
+        return position;
+    }
 
+    public void setPosition(float x, float y) {
+        this.position.set(x, y);
+        this.collider.setPosition(x - radius, y - radius);
+    }
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
 }

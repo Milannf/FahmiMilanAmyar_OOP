@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Background {
-
     private Texture backgroundTexture;
     private TextureRegion backgroundRegion;
     private float width;
@@ -16,8 +15,9 @@ public class Background {
     public Background() {
         backgroundTexture = new Texture(Gdx.files.internal("background.png"));
         backgroundRegion = new TextureRegion(backgroundTexture);
-        width = 2688f;
-        height = 1536f;
+
+        this.width = 2688f;
+        this.height = 1536f;
     }
 
     public void update(float cameraX) {
@@ -32,14 +32,10 @@ public class Background {
         float scaledWidth = width * scale;
         float scaledHeight = height * scale;
 
-        float cameraLeftEdge = currentCameraX - (screenWidth / 2);
-        float cameraRightEdge = currentCameraX + (screenWidth / 2);
+        float startX = (float)Math.floor(currentCameraX / scaledWidth) * scaledWidth;
 
-        float x = (float) Math.floor(cameraLeftEdge / scaledWidth) * scaledWidth;
-
-        while (x < cameraRightEdge) {
+        for (float x = startX - scaledWidth; x < currentCameraX + screenWidth + scaledWidth; x += scaledWidth) {
             batch.draw(backgroundRegion, x, 0, scaledWidth, scaledHeight);
-            x += scaledWidth;
         }
     }
 

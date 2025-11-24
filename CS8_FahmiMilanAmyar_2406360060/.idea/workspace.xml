@@ -5,59 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8b66d27-6539-4ef9-80f7-482801c3ae9a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fly.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/libgdx.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/missile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/run.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/Background.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/GameManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/Ground.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/commands/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/commands/JetpackCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/commands/RestartCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/factories/HomingMissileCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/factories/HorizontalLaserCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/factories/ObstacleFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/factories/VerticalLaserCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/observers/Observer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/observers/ScoreManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/observers/ScoreUIObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/observers/Subject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/obstacles/BaseObstacle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/obstacles/HomingMissile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/obstacles/HorizontalLaser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/obstacles/VerticalLaser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/pools/HomingMissilePool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/pools/HorizontalLaserPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/pools/ObjectPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/fahmi/frontend/pools/VerticalLaserPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/gradle-daemon-jvm.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/icons/logo.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/icons/logo.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/icons/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/nativeimage.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/src/main/java/com/fahmi/frontend/Lwjgl3/Lwjgl3Launcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/src/main/java/com/fahmi/frontend/Lwjgl3/StartupHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/src/main/resources/libgdx128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/src/main/resources/libgdx16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/src/main/resources/libgdx32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/src/main/resources/libgdx64.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/state/MenuState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Backend_FahmiMilanAmyar/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend_FahmiMilanAmyar/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Background.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Coin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Ground.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Ground.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/factories/CoinFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/factories/CoinFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/observers/ScoreUIObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/observers/ScoreUIObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/pools/CoinPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/pools/CoinPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/services/BackendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/services/BackendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/state/PlayingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS9_FahmiMilanAmyar_2406360060/core/src/main/java/com/fahmi/frontend/state/PlayingState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
