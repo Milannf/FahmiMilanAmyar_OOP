@@ -56,4 +56,7 @@ public class Coin {
         this.active = active;
     }
 
+    public boolean isOffScreenCamera(float cameraLeft) {
+        return (position.x + 30f) < cameraLeft;
+    }
 }

@@ -23,7 +23,6 @@ public class ObstacleFactory {
     private final Random random = new Random();
 
     public ObstacleFactory() {
-        // Register all possible creators permanently
         register(new VerticalLaserCreator());
         register(new HorizontalLaserCreator());
         register(new HomingMissileCreator());
@@ -49,7 +48,6 @@ public class ObstacleFactory {
     public BaseObstacle createRandomObstacle(float groundTopY, float
         spawnX, float playerHeight) {
         if (weightedSelection.isEmpty()) {
-            // Fallback or throw exception if no weights are set
             return null;
         }
 

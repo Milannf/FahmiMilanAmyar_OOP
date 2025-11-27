@@ -19,7 +19,7 @@ public class ScoreUIObserver implements Observer {
 
     @Override
     public void update(int score) {
-        Gdx.app.log("ScoreUIObserver", "Skor telah diperbarui: " + score);
+        Gdx.app.log("ScoreUI", "Score updated: " + score);
     }
 
     public void render(int score, int coins) {

@@ -1,5 +1,9 @@
 package com.fahmi.frontend.obstacles;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -12,9 +16,14 @@ public class HomingMissile extends BaseObstacle {
     private float width = 40f;
     private float height = 20f;
 
+    private TextureRegion texture;
+    private float rotation = 0f;
+
     public HomingMissile(Vector2 startPosition, int length) {
         super(startPosition, length);
         this.velocity = new Vector2(0, 0);
+        Texture img = new Texture(Gdx.files.internal("missile.png"));
+        this.texture = new TextureRegion(img);
     }
 
     @Override
@@ -31,10 +40,7 @@ public class HomingMissile extends BaseObstacle {
         if (target == null){
             return false;
         }
-        float missileX = position.x + width / 2f;
-        float targetX = target.getPosition().x + target.getWidth() / 2f;
-
-        return missileX > targetX;
+        return (target.getPosition().x + target.getWidth() / 2f) <= (position.x + width / 2f);
     }
 
     @Override
@@ -44,10 +50,11 @@ public class HomingMissile extends BaseObstacle {
             if (isTargetingPlayer()){
                 Vector2 targetPosition = target.getPosition();
                 velocity.set(targetPosition).sub(position).nor().scl(speed);
+                rotation = velocity.angleDeg();
             }
+
             position.add(velocity.x * delta, velocity.y * delta);
             updateCollider();
-
 
         } else {
             super.update(delta);
@@ -61,6 +68,21 @@ public class HomingMissile extends BaseObstacle {
         } else {
             collider.set(position.x, position.y, width, height);
         }
+    }
+
+    public void render(SpriteBatch batch) {
+        if (!active) {
+            return;
+        }
+
+        batch.draw(
+            texture,
+            position.x, position.y,
+            width / 2f, height / 2f,
+            width, height,
+            1f, 1f,
+            rotation
+        );
     }
 
     @Override
